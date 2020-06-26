@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+// if b is greater than a, update a with b
+// (Returns true if updated)
+template <typename T>
+bool chmax(T &a, const T& b) {
+  if (a < b) {
+    a = b;
+    return true;
+  }
+  return false;
+}
+
+// update b with b if b is less than a
+// (Returns true if updated)
+template <typename T>
+bool chmin(T &a, const T& b) {
+  if (a > b) {
+    a = b;
+    return true;
+  }
+  return false;
+}
+
+int f(int n) {
+  return n * n - 8 * n + 3;
+}
+
+int main() {
+  int ans_min = 1000000000;
+  int ans_max = 0;
+
+  for (int i = 1; i <= 10; i++) {
+    chmin(ans_min, f(i));
+    chmax(ans_max, f(i));
+  }
+  cout << ans_min << " " << ans_max << endl;
+}
